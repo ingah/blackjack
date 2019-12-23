@@ -1,7 +1,7 @@
 package no.inga.blackjack;
 
-public class FinishedPlayingException extends RuntimeException {
-    public FinishedPlayingException(String s) {
+class FinishedPlayingException extends RuntimeException {
+    FinishedPlayingException(String s) {
         super(s);
     }
 }

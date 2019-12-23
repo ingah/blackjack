@@ -25,5 +25,4 @@ Rules
 
   Sam | 27 | S7,S10,CJ
   Charlie  | 19 | D2,H2,C6,H9
-  {code}
 ```

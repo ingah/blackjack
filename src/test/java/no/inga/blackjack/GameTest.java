@@ -20,7 +20,6 @@ public class GameTest {
         PrintStream old = System.out;
         System.setOut(ps);
 
-        Game game = new Game();
         Stack<Card> deck = new Stack<>();
         deck.add(fromString("HK"));
         deck.add(fromString("HQ"));
@@ -29,7 +28,7 @@ public class GameTest {
         deck.add(fromString("H2")); // initial card for Sam
         deck.add(fromString("S6"));
         deck.add(fromString("S3"));
-        game.runGame(deck);
+        Game.runGame(deck);
 
         System.out.flush();
         System.setOut(old);
@@ -46,7 +45,6 @@ public class GameTest {
         PrintStream old = System.out;
         System.setOut(ps);
 
-        Game game = new Game();
         Stack<Card> deck = new Stack<>();
         deck.add(fromString("H7"));
         deck.add(fromString("H2")); // initial card for Sam
@@ -54,7 +52,7 @@ public class GameTest {
         deck.add(fromString("S7"));
         deck.add(fromString("S10"));
 
-        game.runGame(deck);
+        Game.runGame(deck);
 
         System.out.flush();
         System.setOut(old);
@@ -71,7 +69,6 @@ public class GameTest {
         PrintStream old = System.out;
         System.setOut(ps);
 
-        Game game = new Game();
         Stack<Card> deck = new Stack<>();
         deck.add(fromString("SK")); // I score 26
         deck.add(fromString("S1")); // initial card for Sam
@@ -79,7 +76,7 @@ public class GameTest {
         deck.add(fromString("SQ"));
         deck.add(fromString("S6"));
 
-        game.runGame(deck);
+        Game.runGame(deck);
 
         System.out.flush();
         System.setOut(old);
@@ -96,7 +93,6 @@ public class GameTest {
         PrintStream old = System.out;
         System.setOut(ps);
 
-        Game game = new Game();
         Stack<Card> deck = new Stack<>();
         deck.add(fromString("SK"));
         deck.add(fromString("S2")); // Inga scores 18
@@ -105,7 +101,7 @@ public class GameTest {
         deck.add(fromString("SQ"));
         deck.add(fromString("S6"));
 
-        game.runGame(deck);
+        Game.runGame(deck);
 
         System.out.flush();
         System.setOut(old);
@@ -122,14 +118,13 @@ public class GameTest {
         PrintStream old = System.out;
         System.setOut(ps);
 
-        Game game = new Game();
         Stack<Card> deck = new Stack<>();
         deck.add(fromString("S1"));
         deck.add(fromString("S2"));
         deck.add(fromString("SK"));
         deck.add(fromString("SA"));
 
-        game.runGame(deck);
+        Game.runGame(deck);
 
         System.out.flush();
         System.setOut(old);
@@ -146,14 +141,13 @@ public class GameTest {
         PrintStream old = System.out;
         System.setOut(ps);
 
-        Game game = new Game();
         Stack<Card> deck = new Stack<>();
         deck.add(fromString("SK"));
         deck.add(fromString("SA"));
         deck.add(fromString("S1"));
         deck.add(fromString("S2"));
 
-        game.runGame(deck);
+        Game.runGame(deck);
 
         System.out.flush();
         System.setOut(old);

@@ -5,6 +5,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Collections;
 import java.util.Stack;
 
 public class Main {
@@ -20,6 +21,8 @@ public class Main {
         RestTemplate restTemplate = new RestTemplate();
         ParameterizedTypeReference<Stack<Card>> cardType = new ParameterizedTypeReference<Stack<Card>>() {};
         ResponseEntity<Stack<Card>> response = restTemplate.exchange(deckUrl, HttpMethod.GET, null, cardType);
-        Game.runGame(response.getBody());
+        Stack<Card> deck = response.getBody();
+        Collections.shuffle(deck);
+        Game.runGame(deck);
     }
 }

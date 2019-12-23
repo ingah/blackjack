@@ -3,11 +3,11 @@ package no.inga.blackjack;
 
 import java.util.Stack;
 
-public class Game {
+class Game {
 
     private static final int TARGET_SCORE = 21;
 
-    public static void runGame(Stack<Card> deck) {
+    static void runGame(Stack<Card> deck) {
         Player inga = new Player("Inga", deck, 17);
         Player sam = new Player("Sam", deck);
 

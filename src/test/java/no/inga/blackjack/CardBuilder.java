@@ -1,8 +1,8 @@
 package no.inga.blackjack;
 
-public class CardBuilder {
+class CardBuilder {
 
-    public static Card fromString(String cardRepresentation) {
+    static Card fromString(String cardRepresentation) {
         String value = cardRepresentation.substring(1);
         Suit suit = parseSuit(cardRepresentation.substring(0, 1));
         return new no.inga.blackjack.Card(suit, value);
