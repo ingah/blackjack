@@ -22,24 +22,26 @@ class Card {
 
     static Card fromString(String cardRepresentation) {
         String value = cardRepresentation.substring(1);
-        Suit suit = Suit.parse(cardRepresentation.substring(0,1));
+        Suit suit = Suit.parse(cardRepresentation.substring(0, 1));
         return new Card(suit, value);
     }
 
     private static int determineScoreValueFromLetter(String letter) {
-        int value;
-        try {
-            value = Integer.parseInt(letter);
-        } catch (NumberFormatException nfe) {
-            if (letter.equals("J") || letter.equals("Q") || letter.equals("K")) {
-                value = 10;
-            } else if (letter.equals("A")) {
-                value = 11;
-            } else {
-                throw new RuntimeException("Cannot parse Card, " + letter + " is not a valid card type");
-            }
+        if (letter.equals("J") || letter.equals("Q") || letter.equals("K")) {
+            return 10;
+        } else if (letter.equals("A")) {
+            return 11;
+        } else {
+            return parseToInt(letter);
         }
-        return value;
+    }
+
+    private static int parseToInt(String letter) {
+        try {
+            return Integer.parseInt(letter);
+        } catch (NumberFormatException nfe) {
+            throw new RuntimeException("Cannot parse Card, " + letter + " is not a valid card type", nfe);
+        }
     }
 
 }
