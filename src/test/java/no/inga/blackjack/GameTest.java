@@ -5,11 +5,10 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.util.Stack;
 
-import static no.inga.blackjack.CardBuilder.fromString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import static no.inga.blackjack.Card.fromString;
 
 public class GameTest {
 
@@ -20,12 +19,12 @@ public class GameTest {
         PrintStream old = System.out;
         System.setOut(ps);
 
-        Stack<Card> deck = new Stack<>();
+        Deck deck = new Deck();
         deck.add(fromString("HK"));
         deck.add(fromString("HQ"));
         deck.add(fromString("SQ")); //19
-        deck.add(fromString("H6")); // initial card for Sam
-        deck.add(fromString("H2")); // initial card for Sam
+        deck.add(fromString("H6")); // initial card for dealer
+        deck.add(fromString("H2")); // initial card for dealer
         deck.add(fromString("S6"));
         deck.add(fromString("S3"));
         Game.runGame(deck);
@@ -45,7 +44,7 @@ public class GameTest {
         PrintStream old = System.out;
         System.setOut(ps);
 
-        Stack<Card> deck = new Stack<>();
+        Deck deck = new Deck();
         deck.add(fromString("H7"));
         deck.add(fromString("H2")); // initial card for Sam
         deck.add(fromString("SQ")); // initial card for Sam
@@ -69,7 +68,7 @@ public class GameTest {
         PrintStream old = System.out;
         System.setOut(ps);
 
-        Stack<Card> deck = new Stack<>();
+        Deck deck = new Deck();
         deck.add(fromString("SK")); // I score 26
         deck.add(fromString("S1")); // initial card for Sam
         deck.add(fromString("H1")); // initial card for Sam
@@ -93,7 +92,7 @@ public class GameTest {
         PrintStream old = System.out;
         System.setOut(ps);
 
-        Stack<Card> deck = new Stack<>();
+        Deck deck = new Deck();
         deck.add(fromString("SK"));
         deck.add(fromString("S2")); // Inga scores 18
         deck.add(fromString("S7")); // initial card for Sam
@@ -118,7 +117,7 @@ public class GameTest {
         PrintStream old = System.out;
         System.setOut(ps);
 
-        Stack<Card> deck = new Stack<>();
+        Deck deck = new Deck();
         deck.add(fromString("S1"));
         deck.add(fromString("S2"));
         deck.add(fromString("SK"));
@@ -141,7 +140,7 @@ public class GameTest {
         PrintStream old = System.out;
         System.setOut(ps);
 
-        Stack<Card> deck = new Stack<>();
+        Deck deck = new Deck();
         deck.add(fromString("SK"));
         deck.add(fromString("SA"));
         deck.add(fromString("S1"));

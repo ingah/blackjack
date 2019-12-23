@@ -1,28 +1,20 @@
 package no.inga.blackjack;
 
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.client.RestTemplate;
-
-import java.util.Collections;
-import java.util.Stack;
+import java.io.IOException;
 
 public class Main {
 
-    private static String deckUrl = "";
-
-    public static void main(String args[]) {
-        if (args.length > 0) {
-            deckUrl = args[0];
+    public static void main(String[] args) throws IOException {
+        Deck deck;
+        if(args.length == 1) {
+            deck = Deck.prepareDeckFromFile(args[0]);
+        } else if (args.length == 0) {
+            deck = Deck.prepareNewShuffledDeck();
         } else {
-            System.out.println("Using defalt deck URL " + deckUrl + ". For different deck URL, provide it as command line parameter.");
+            System.out.println("Please provide only one or no parameters");
+            return;
         }
-        RestTemplate restTemplate = new RestTemplate();
-        ParameterizedTypeReference<Stack<Card>> cardType = new ParameterizedTypeReference<Stack<Card>>() {};
-        ResponseEntity<Stack<Card>> response = restTemplate.exchange(deckUrl, HttpMethod.GET, null, cardType);
-        Stack<Card> deck = response.getBody();
-        Collections.shuffle(deck);
+
         Game.runGame(deck);
     }
 }

@@ -6,14 +6,14 @@ import java.util.Arrays;
 import java.util.Stack;
 
 import static junit.framework.TestCase.assertFalse;
-import static no.inga.blackjack.CardBuilder.fromString;
+import static no.inga.blackjack.Card.fromString;
 import static org.junit.Assert.assertTrue;
 
 public class PlayerTest {
 
    @Test(expected = FinishedPlayingException.class)
     public void should_stop_drawing_when_bail_out_litmit_reached() {
-       Stack<Card> deck = new Stack<>();
+       Deck deck = new Deck();
        deck.addAll(Arrays.asList(fromString("D1"), fromString("SJ"), fromString("S5"), fromString("S1")));
        Player player = new Player("player", deck, 17);
        player.drawCard();

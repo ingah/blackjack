@@ -1,19 +1,15 @@
 package no.inga.blackjack;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 class Card {
 
     private final int scoreValue;
     private final Suit suit;
     private final String value;
 
-    @JsonCreator
-    Card(@JsonProperty("suit") Suit suit, @JsonProperty("value") String value) {
+    Card(Suit suit, String value) {
         this.suit = suit;
         this.value = value;
-        this.scoreValue = determineScoreValue(value);
+        this.scoreValue = determineScoreValueFromLetter(value);
     }
 
     int getValue() {
@@ -21,25 +17,29 @@ class Card {
     }
 
     public String toString() {
-        return suit.toString() +  value;
+        return suit.toString() + value;
     }
 
-    private static int determineScoreValue(String value) {
-        int scoreValue;
-        if (isValidNumber(value)) {
-            scoreValue = Integer.parseInt(value);
-        } else if (value.equals("J") || value.equals("Q") || value.equals("K")) {
-            scoreValue = 10;
-        } else if (value.equals("A")) {
-            scoreValue = 11;
-        } else {
-            throw new RuntimeException("Cannot parse Card, " + value + " is not a valid card type");
+    static Card fromString(String cardRepresentation) {
+        String value = cardRepresentation.substring(1);
+        Suit suit = Suit.parse(cardRepresentation.substring(0,1));
+        return new Card(suit, value);
+    }
+
+    private static int determineScoreValueFromLetter(String letter) {
+        int value;
+        try {
+            value = Integer.parseInt(letter);
+        } catch (NumberFormatException nfe) {
+            if (letter.equals("J") || letter.equals("Q") || letter.equals("K")) {
+                value = 10;
+            } else if (letter.equals("A")) {
+                value = 11;
+            } else {
+                throw new RuntimeException("Cannot parse Card, " + letter + " is not a valid card type");
+            }
         }
-        return scoreValue;
-    }
-
-    private static boolean isValidNumber(String letter) {
-        return letter.matches("^[1-9]0?$");
+        return value;
     }
 
 }

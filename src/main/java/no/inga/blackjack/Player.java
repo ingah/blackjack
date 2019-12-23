@@ -10,16 +10,16 @@ import static no.inga.blackjack.GameScorer.*;
  class Player {
 
     private final String playerName;
-    private final Stack<Card> deck;
+    private final Deck deck;
     private final List<Card> hand = new ArrayList<>();
     private int bailOutLimit;
     private boolean done = false;
-     Player(String playerName, Stack<Card> deck, int bailOutLimit) {
+     Player(String playerName, Deck deck, int bailOutLimit) {
         this(playerName, deck);
         this.bailOutLimit = bailOutLimit;
     }
 
-    Player(String playerName, Stack<Card> deck) {
+    Player(String playerName, Deck deck) {
         this.playerName = playerName;
         this.deck = deck;
         drawInitialCards();
