@@ -1,10 +1,10 @@
 package no.inga.blackjack;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GameScorerTest {
 
@@ -15,5 +15,4 @@ public class GameScorerTest {
         assertEquals(17, GameScorer.score(Arrays.asList(new Card(Suit.HEARTS, "6"), new Card(Suit.CLUBS, "1"), new Card(Suit.DIAMONDS, "K"))));
         assertEquals(18, GameScorer.score(Arrays.asList(new Card(Suit.HEARTS, "6"), new Card(Suit.CLUBS, "1"), new Card(Suit.DIAMONDS, "A"))));
     }
-
 }

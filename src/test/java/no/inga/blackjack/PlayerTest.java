@@ -1,17 +1,17 @@
 package no.inga.blackjack;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.Stack;
 
-import static junit.framework.TestCase.assertFalse;
 import static no.inga.blackjack.Card.fromString;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PlayerTest {
 
-   @Test(expected = FinishedPlayingException.class)
+   @Test
     public void should_stop_drawing_when_bail_out_litmit_reached() {
        Deck deck = new Deck();
        deck.addAll(Arrays.asList(fromString("D1"), fromString("SJ"), fromString("S5"), fromString("S1")));
@@ -20,6 +20,6 @@ public class PlayerTest {
        assertFalse(player.isDone());
        player.drawCard();
        assertTrue(player.isDone());
-       player.drawCard();
+      assertThrows(FinishedPlayingException.class, player::drawCard);
    }
 }
